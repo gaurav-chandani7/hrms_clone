@@ -28,6 +28,8 @@ class _GoalTypeState extends State<GoalType> {
 
   String? goalType;
 
+  String? statusValue;
+
   @override
   Widget build(BuildContext context) {
     final showMenuStatus = context.watch<ShowMenuCubit>().state;
@@ -160,7 +162,7 @@ class _GoalTypeState extends State<GoalType> {
                                       child: DropdownButtonHideUnderline(
                                         child: DropdownButton(
                                           isExpanded: true,
-                                          value: goalType ?? 'Active',
+                                          value: statusValue ?? 'Active',
                                           items: [
                                             'Active',
                                             'Inactive',
@@ -171,7 +173,7 @@ class _GoalTypeState extends State<GoalType> {
                                                   child: Text(
                                                     e,
                                                     style: txtStyle(
-                                                        color: e == goalType
+                                                        color: e == statusValue
                                                             ? Colors.red
                                                             : Colors.black),
                                                   ),
@@ -180,7 +182,7 @@ class _GoalTypeState extends State<GoalType> {
                                               .toList(),
                                           onChanged: (value) {
                                             setState(() {
-                                              goalType = value;
+                                              statusValue = value;
                                             });
                                           },
                                         ),

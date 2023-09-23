@@ -282,7 +282,7 @@ class _GoalListState extends State<GoalList> {
                                         child: DropdownButtonHideUnderline(
                                           child: DropdownButton(
                                             isExpanded: true,
-                                            value: goalType ?? 'Active',
+                                            value: statusValue ?? 'Active',
                                             items: [
                                               'Active',
                                               'Inactive',
@@ -293,7 +293,8 @@ class _GoalListState extends State<GoalList> {
                                                     child: Text(
                                                       e,
                                                       style: txtStyle(
-                                                          color: e == goalType
+                                                          color: e ==
+                                                                  statusValue
                                                               ? Colors.red
                                                               : Colors.black),
                                                     ),
@@ -302,7 +303,7 @@ class _GoalListState extends State<GoalList> {
                                                 .toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                goalType = value;
+                                                statusValue = value;
                                               });
                                             },
                                           ),
