@@ -409,8 +409,16 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
                             width: Sizes().scrWidth(context),
                             height: Sizes().ratioWithScrHeight(context, 0.2),
                             color: const Color.fromARGB(255, 228, 222, 222),
-                            child: quill.QuillEditor.basic(
-                                controller: controller, readOnly: false),
+                            child: quill.QuillEditor(
+                              controller: controller,
+                              readOnly: false,
+                              autoFocus: false,
+                              focusNode: FocusNode(),
+                              scrollable: true,
+                              scrollController: ScrollController(),
+                              padding: EdgeInsets.zero,
+                              expands: false,
+                            ),
                           ),
                           Spacing().verticalSpace(context, 0.04),
                           SizedBox(
