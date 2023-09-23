@@ -98,10 +98,30 @@ class _PayRollItemState extends State<PayRollItem> {
                           child: StatefulBuilder(
                             builder: (context, setState) {
                               return AlertDialog(
-                                title: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Text('Add Addition'),
+                                title: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        SizedBox(
+                                          width: 20,
+                                          height: 30,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Icon(Icons.cancel),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: const [
+                                        Text('Add Addition'),
+                                      ],
+                                    ),
                                   ],
                                 ),
                                 content: Column(children: [

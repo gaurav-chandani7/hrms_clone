@@ -70,13 +70,34 @@ class _UsersState extends State<Users> {
                           builder: (context, setState) {
                             return SingleChildScrollView(
                               child: AlertDialog(
-                                title: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                title: Column(
                                   children: [
-                                    Text(
-                                      'Add User',
-                                      style: txtStyle(
-                                          size: 22, weight: FontWeight.w600),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        SizedBox(
+                                          width: 20,
+                                          height: 30,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Icon(Icons.cancel),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Add User',
+                                          style: txtStyle(
+                                              size: 22,
+                                              weight: FontWeight.w600),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
