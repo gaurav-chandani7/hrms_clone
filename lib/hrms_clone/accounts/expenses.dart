@@ -17,7 +17,6 @@ class _ExpensesState extends State<Expenses> {
 
   ScrollController scrollController = ScrollController();
   String? status;
-  String? user;
   String? purchase;
   String? paid;
   String? purchasedBy;
@@ -433,14 +432,14 @@ class _ExpensesState extends State<Expenses> {
                                 e,
                                 style: txtStyle(
                                     color:
-                                        e == user ? Colors.red : Colors.black),
+                                        e == paid ? Colors.red : Colors.black),
                               ),
                             ),
                           )
                           .toList(),
                       onChanged: (value) {
                         setState(() {
-                          user = value;
+                          paid = value;
                         });
                       },
                     ),
