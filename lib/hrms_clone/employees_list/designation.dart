@@ -122,7 +122,9 @@ class _DesignationState extends State<Designation> {
                                               )
                                               .toList(),
                                           onChanged: (value) {
-                                            setState(() {});
+                                            setState(() {
+                                              departmentValue = value;
+                                            });
                                           },
                                         ),
                                       ),

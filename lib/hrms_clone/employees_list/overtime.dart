@@ -125,7 +125,9 @@ class _OverTimeState extends State<OverTime> {
                                                 )
                                                 .toList(),
                                             onChanged: (value) {
-                                              setState(() {});
+                                              setState(() {
+                                                employeeValue = value;
+                                              });
                                             },
                                           ),
                                         ),

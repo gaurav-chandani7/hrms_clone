@@ -18,6 +18,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
   ScrollController scrollController = ScrollController();
 
   String? status;
+  String? dropdownValue;
   TextEditingController fromDate = TextEditingController();
   TextEditingController toDate = TextEditingController();
   FocusNode employeeNode = FocusNode();
@@ -477,7 +478,7 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
                       isExpanded: true,
-                      value: 'John Doe',
+                      value: dropdownValue,
                       items: [
                         '--Select--',
                         'John Doe',
@@ -494,7 +495,9 @@ class _EmployeesSalaryState extends State<EmployeesSalary> {
                           )
                           .toList(),
                       onChanged: (value) {
-                        setState(() {});
+                        setState(() {
+                          dropdownValue = value;
+                        });
                       },
                     ),
                   ),
