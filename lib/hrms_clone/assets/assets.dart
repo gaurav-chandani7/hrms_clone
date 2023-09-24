@@ -18,6 +18,7 @@ class _AssetsState extends State<Assets> {
   ScrollController scrollController = ScrollController();
   String? status;
   String? user;
+  String? dialogUser;
   TextEditingController fromDate = TextEditingController();
   TextEditingController toDate = TextEditingController();
   FocusNode employeeNode = FocusNode();
@@ -355,7 +356,7 @@ class _AssetsState extends State<Assets> {
                                         child: DropdownButtonHideUnderline(
                                           child: DropdownButton(
                                             isExpanded: true,
-                                            value: user ?? 'John Doe',
+                                            value: dialogUser ?? 'John Doe',
                                             items: [
                                               'John Doe',
                                               'Richard Miles',
@@ -366,7 +367,7 @@ class _AssetsState extends State<Assets> {
                                                     child: Text(
                                                       e,
                                                       style: txtStyle(
-                                                          color: e == user
+                                                          color: e == dialogUser
                                                               ? Colors.red
                                                               : Colors.black),
                                                     ),
@@ -375,7 +376,7 @@ class _AssetsState extends State<Assets> {
                                                 .toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                user = value;
+                                                dialogUser = value;
                                               });
                                             },
                                           ),

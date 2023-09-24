@@ -45,6 +45,7 @@ class _EmployeesListState extends State<EmployeesList> {
   bool showVerticalList = true;
   String? departmentValue;
   String? designationValue;
+  String? dialogDesignationValue;
 
   @override
   Widget build(BuildContext context) {
@@ -366,7 +367,7 @@ class _EmployeesListState extends State<EmployeesList> {
                                         child: DropdownButtonHideUnderline(
                                           child: DropdownButton(
                                             isExpanded: true,
-                                            value: designationValue ??
+                                            value: dialogDesignationValue ??
                                                 'Select Designation',
                                             items: [
                                               'Select Designation',
@@ -386,7 +387,7 @@ class _EmployeesListState extends State<EmployeesList> {
                                                 .toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                designationValue = value;
+                                                dialogDesignationValue = value;
                                               });
                                             },
                                           ),
