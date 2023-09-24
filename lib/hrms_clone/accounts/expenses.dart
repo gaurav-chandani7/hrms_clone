@@ -509,12 +509,17 @@ class _ExpensesState extends State<Expenses> {
                     firstDate: DateTime.now(),
                     lastDate: DateTime(2024));
                 if (newDate != null) {
-                  setState(() {});
+                  setState(() {
+                    final date =
+                        DateFormat('dd-MM-yyyy').format(newDate).toString();
+                    toDate.text = date.replaceAll('-', '/');
+                  });
                 }
               },
-              child: const TextField(
+              child: TextField(
                 enabled: false,
-                decoration: InputDecoration(
+                controller: toDate,
+                decoration: const InputDecoration(
                     hintText: 'To',
                     border: OutlineInputBorder(),
                     suffixIcon: Icon(Icons.calendar_month)),

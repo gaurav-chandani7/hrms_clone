@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import '../../core/app_widgets.dart';
 import '../../core/components/popup_menu/domain/show_menu_cubit.dart';
 import '../../core/utils.dart';
@@ -16,6 +17,7 @@ class OverTime extends StatefulWidget {
 class _OverTimeState extends State<OverTime> {
   ScrollController scrollController = ScrollController();
   String? employeeValue;
+  TextEditingController dateTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -156,12 +158,17 @@ class _OverTimeState extends State<OverTime> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            setState(() {});
+                                            setState(() {
+                                              dateTextController.text =
+                                                  DateFormat('yyyy-MM-dd')
+                                                      .format(newDate);
+                                            });
                                           }
                                         },
-                                        child: const TextField(
+                                        child: TextField(
                                           enabled: false,
-                                          decoration: InputDecoration(
+                                          controller: dateTextController,
+                                          decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               suffixIcon:
                                                   Icon(Icons.calendar_month)),

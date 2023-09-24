@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/hrms_clone/view_more_projects/components/member_detail_horiz_list.dart';
 import 'package:hrms_clone/hrms_clone/view_more_projects/components/member_detail_vert_list.dart';
 import 'package:hrms_clone/hrms_clone/view_more_projects/domain/member_sortlist_cubit.dart';
+import 'package:intl/intl.dart';
 import '../../core/app_widgets.dart';
 import '../../core/components/popup_menu/domain/show_menu_cubit.dart';
 import '../../core/utils.dart';
@@ -35,6 +36,9 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
   String? priorityValue;
   String? designationValue;
   final controller = quill.QuillController.basic();
+  TextEditingController fromDateController = TextEditingController();
+  TextEditingController toDateController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -205,12 +209,17 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
                                     firstDate: DateTime.now(),
                                     lastDate: DateTime(2024));
                                 if (newDate != null) {
-                                  setState(() {});
+                                  setState(() {
+                                    fromDateController.text =
+                                        DateFormat('yyyy-MM-dd')
+                                            .format(newDate);
+                                  });
                                 }
                               },
-                              child: const TextField(
+                              child: TextField(
                                 enabled: false,
-                                decoration: InputDecoration(
+                                controller: fromDateController,
+                                decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     suffixIcon: Icon(Icons.calendar_month)),
                               ),
@@ -237,12 +246,17 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
                                     firstDate: DateTime.now(),
                                     lastDate: DateTime(2024));
                                 if (newDate != null) {
-                                  setState(() {});
+                                  setState(() {
+                                    toDateController.text =
+                                        DateFormat('yyyy-MM-dd')
+                                            .format(newDate);
+                                  });
                                 }
                               },
-                              child: const TextField(
+                              child: TextField(
                                 enabled: false,
-                                decoration: InputDecoration(
+                                controller: toDateController,
+                                decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     suffixIcon: Icon(Icons.calendar_month)),
                               ),

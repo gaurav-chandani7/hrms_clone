@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import '../../core/app_widgets.dart';
 import '../../core/components/popup_menu/domain/show_menu_cubit.dart';
 import '../../core/utils.dart';
@@ -16,6 +17,8 @@ class EmployeeLeave extends StatefulWidget {
 class _EmployeeLeaveState extends State<EmployeeLeave> {
   ScrollController scrollController = ScrollController();
   String? leaveValue;
+  TextEditingController fromDateController = TextEditingController();
+  TextEditingController toDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -156,12 +159,17 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            setState(() {});
+                                            setState(() {
+                                              fromDateController.text =
+                                                  DateFormat('yyyy-MM-dd')
+                                                      .format(newDate);
+                                            });
                                           }
                                         },
-                                        child: const TextField(
+                                        child: TextField(
                                           enabled: false,
-                                          decoration: InputDecoration(
+                                          controller: fromDateController,
+                                          decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               suffixIcon:
                                                   Icon(Icons.calendar_month)),
@@ -191,12 +199,17 @@ class _EmployeeLeaveState extends State<EmployeeLeave> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            setState(() {});
+                                            setState(() {
+                                              toDateController.text =
+                                                  DateFormat('yyyy-MM-dd')
+                                                      .format(newDate);
+                                            });
                                           }
                                         },
-                                        child: const TextField(
+                                        child: TextField(
                                           enabled: false,
-                                          decoration: InputDecoration(
+                                          controller: toDateController,
+                                          decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               suffixIcon:
                                                   Icon(Icons.calendar_month)),

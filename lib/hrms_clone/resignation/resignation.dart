@@ -105,15 +105,16 @@ class _ResignationState extends State<Resignation> {
                                                 lastDate: DateTime(2024));
                                         if (newDate != null) {
                                           setState(() {
-                                            resignDateController.text =
+                                            noticeController.text =
                                                 DateFormat('yyyy-MM-dd')
                                                     .format(newDate);
                                           });
                                         }
                                       },
-                                      child: const TextField(
+                                      child: TextField(
                                         enabled: false,
-                                        decoration: InputDecoration(
+                                        controller: noticeController,
+                                        decoration: const InputDecoration(
                                             border: OutlineInputBorder(),
                                             suffixIcon:
                                                 Icon(Icons.calendar_month)),
@@ -150,9 +151,10 @@ class _ResignationState extends State<Resignation> {
                                           });
                                         }
                                       },
-                                      child: const TextField(
+                                      child: TextField(
                                         enabled: false,
-                                        decoration: InputDecoration(
+                                        controller: resignDateController,
+                                        decoration: const InputDecoration(
                                             border: OutlineInputBorder(),
                                             suffixIcon:
                                                 Icon(Icons.calendar_month)),

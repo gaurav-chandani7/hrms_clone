@@ -21,6 +21,7 @@ class _AssetsState extends State<Assets> {
   String? dialogUser;
   TextEditingController fromDate = TextEditingController();
   TextEditingController toDate = TextEditingController();
+  TextEditingController resignationDateController = TextEditingController();
   FocusNode employeeNode = FocusNode();
 
   @override
@@ -322,12 +323,17 @@ class _AssetsState extends State<Assets> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            setState(() {});
+                                            setState(() {
+                                              resignationDateController.text =
+                                                  DateFormat('yyyy-MM-dd')
+                                                      .format(newDate);
+                                            });
                                           }
                                         },
-                                        child: const TextField(
+                                        child: TextField(
                                           enabled: false,
-                                          decoration: InputDecoration(
+                                          controller: resignationDateController,
+                                          decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               suffixIcon:
                                                   Icon(Icons.calendar_month)),

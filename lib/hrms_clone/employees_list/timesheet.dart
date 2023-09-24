@@ -17,6 +17,13 @@ class TimeSheet extends StatefulWidget {
 class _TimeSheetState extends State<TimeSheet> {
   ScrollController scrollController = ScrollController();
   String? projectValue;
+  String date = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  late TextEditingController dateTextController;
+  @override
+  void initState() {
+    super.initState();
+    dateTextController = TextEditingController(text: date);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -234,14 +241,16 @@ class _TimeSheetState extends State<TimeSheet> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            setState(() {});
+                                            setState(() {
+                                              date = DateFormat('yyyy-MM-dd')
+                                                  .format(newDate);
+                                              dateTextController.text = date;
+                                            });
                                           }
                                         },
                                         child: TextField(
                                           enabled: false,
-                                          controller: TextEditingController(
-                                              text: DateFormat('yyyy-MM-dd')
-                                                  .format(DateTime.now())),
+                                          controller: dateTextController,
                                           decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               suffixIcon:

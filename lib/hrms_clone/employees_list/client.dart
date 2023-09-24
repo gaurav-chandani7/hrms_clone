@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrms_clone/hrms_clone/employees_list/components/employee_detail_tile.dart';
 import 'package:hrms_clone/hrms_clone/view_more_projects/components/member_detail_horiz_list.dart';
+import 'package:intl/intl.dart';
 import '../../core/app_widgets.dart';
 import '../../core/components/popup_menu/domain/show_menu_cubit.dart';
 import '../../core/utils.dart';
@@ -50,6 +51,8 @@ class _ClientListState extends State<ClientList> {
   String? projectValue;
   String? hourlyValue;
   String? priorityValue;
+  TextEditingController fromDateController = TextEditingController();
+  TextEditingController toDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -210,12 +213,17 @@ class _ClientListState extends State<ClientList> {
                                           firstDate: DateTime.now(),
                                           lastDate: DateTime(2024));
                                       if (newDate != null) {
-                                        setState(() {});
+                                        setState(() {
+                                          fromDateController.text =
+                                              DateFormat('yyyy-MM-dd')
+                                                  .format(newDate);
+                                        });
                                       }
                                     },
-                                    child: const TextField(
+                                    child: TextField(
                                       enabled: false,
-                                      decoration: InputDecoration(
+                                      controller: fromDateController,
+                                      decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                           suffixIcon:
                                               Icon(Icons.calendar_month)),
@@ -244,12 +252,17 @@ class _ClientListState extends State<ClientList> {
                                           firstDate: DateTime.now(),
                                           lastDate: DateTime(2024));
                                       if (newDate != null) {
-                                        setState(() {});
+                                        setState(() {
+                                          toDateController.text =
+                                              DateFormat('yyyy-MM-dd')
+                                                  .format(newDate);
+                                        });
                                       }
                                     },
-                                    child: const TextField(
+                                    child: TextField(
                                       enabled: false,
-                                      decoration: InputDecoration(
+                                      controller: toDateController,
+                                      decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                           suffixIcon:
                                               Icon(Icons.calendar_month)),

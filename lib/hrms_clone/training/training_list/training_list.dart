@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import '../../../core/app_widgets.dart';
 import '../../../core/components/popup_menu/domain/show_menu_cubit.dart';
 import '../../../core/utils.dart';
@@ -53,6 +54,8 @@ class _TrainingListState extends State<TrainingList> {
   String? trainingValue;
   String? trainerValue;
   String? employeesValue;
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -334,12 +337,17 @@ class _TrainingListState extends State<TrainingList> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            setState(() {});
+                                            setState(() {
+                                              startDateController.text =
+                                                  DateFormat('yyyy-MM-dd')
+                                                      .format(newDate);
+                                            });
                                           }
                                         },
-                                        child: const TextField(
+                                        child: TextField(
                                           enabled: false,
-                                          decoration: InputDecoration(
+                                          controller: startDateController,
+                                          decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               suffixIcon:
                                                   Icon(Icons.calendar_month)),
@@ -369,12 +377,17 @@ class _TrainingListState extends State<TrainingList> {
                                                   firstDate: DateTime.now(),
                                                   lastDate: DateTime(2024));
                                           if (newDate != null) {
-                                            setState(() {});
+                                            setState(() {
+                                              endDateController.text =
+                                                  DateFormat('yyyy-MM-dd')
+                                                      .format(newDate);
+                                            });
                                           }
                                         },
-                                        child: const TextField(
+                                        child: TextField(
                                           enabled: false,
-                                          decoration: InputDecoration(
+                                          controller: endDateController,
+                                          decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               suffixIcon:
                                                   Icon(Icons.calendar_month)),
