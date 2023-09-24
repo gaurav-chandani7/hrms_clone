@@ -103,11 +103,13 @@ class _HolidaysState extends State<Holidays> {
                                           initialDate: DateTime.now(),
                                           firstDate: DateTime.now(),
                                           lastDate: DateTime(2024));
-                                      setState(() {
-                                        date = DateFormat('yyyy-MM-dd')
-                                            .format(newDate!);
-                                        controllerTwo.text = date;
-                                      });
+                                      if (newDate != null) {
+                                        setState(() {
+                                          date = DateFormat('yyyy-MM-dd')
+                                              .format(newDate);
+                                          controllerTwo.text = date;
+                                        });
+                                      }
                                     },
                                     child: TextField(
                                       enabled: false,
