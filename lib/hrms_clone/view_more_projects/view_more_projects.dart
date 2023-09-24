@@ -286,7 +286,7 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
                                           child: Text(
                                             e,
                                             style: txtStyle(
-                                                color: e == projectValue
+                                                color: e == hourlyValue
                                                     ? Colors.red
                                                     : Colors.black),
                                           ),
@@ -295,7 +295,7 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
                                       .toList(),
                                   onChanged: (value) {
                                     setState(() {
-                                      projectValue = value;
+                                      hourlyValue = value;
                                     });
                                   },
                                 ),
@@ -324,7 +324,7 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
                                           child: Text(
                                             e,
                                             style: txtStyle(
-                                                color: e == projectValue
+                                                color: e == priorityValue
                                                     ? Colors.red
                                                     : Colors.black),
                                           ),
@@ -333,7 +333,7 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
                                       .toList(),
                                   onChanged: (value) {
                                     setState(() {
-                                      projectValue = value;
+                                      priorityValue = value;
                                     });
                                   },
                                 ),

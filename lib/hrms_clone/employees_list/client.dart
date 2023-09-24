@@ -296,7 +296,7 @@ class _ClientListState extends State<ClientList> {
                                                 child: Text(
                                                   e,
                                                   style: txtStyle(
-                                                      color: e == projectValue
+                                                      color: e == hourlyValue
                                                           ? Colors.red
                                                           : Colors.black),
                                                 ),
@@ -305,7 +305,7 @@ class _ClientListState extends State<ClientList> {
                                             .toList(),
                                         onChanged: (value) {
                                           setState(() {
-                                            projectValue = value;
+                                            hourlyValue = value;
                                           });
                                         },
                                       ),
@@ -334,7 +334,7 @@ class _ClientListState extends State<ClientList> {
                                                 child: Text(
                                                   e,
                                                   style: txtStyle(
-                                                      color: e == projectValue
+                                                      color: e == priorityValue
                                                           ? Colors.red
                                                           : Colors.black),
                                                 ),
@@ -343,7 +343,7 @@ class _ClientListState extends State<ClientList> {
                                             .toList(),
                                         onChanged: (value) {
                                           setState(() {
-                                            projectValue = value;
+                                            priorityValue = value;
                                           });
                                         },
                                       ),
