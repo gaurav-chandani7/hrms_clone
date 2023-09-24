@@ -108,340 +108,347 @@ class _ViewMoreProjectsState extends State<ViewMoreProjects> {
                 onTap: () => showDialog(
                   context: context,
                   builder: (context) {
-                    return SingleChildScrollView(
-                      child: AlertDialog(
-                        title: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                SizedBox(
-                                  width: 20,
-                                  height: 30,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Icon(Icons.cancel),
+                    return StatefulBuilder(builder: (context, setState) {
+                      return SingleChildScrollView(
+                        child: AlertDialog(
+                          title: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                    height: 30,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Icon(Icons.cancel),
+                                    ),
                                   ),
+                                ],
+                              ),
+                              Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [Text('Create Project')]),
+                            ],
+                          ),
+                          content: Column(children: [
+                            Spacing().verticalSpace(context, 0.02),
+                            Row(children: const [
+                              Text('Project Name'),
+                            ]),
+                            Spacing().verticalSpace(context, 0.02),
+                            const TextField(
+                              decoration:
+                                  InputDecoration(border: OutlineInputBorder()),
+                            ),
+                            Spacing().verticalSpace(context, 0.03),
+                            Row(children: const [Text('Client')]),
+                            Spacing().verticalSpace(context, 0.02),
+                            Container(
+                              height:
+                                  Sizes().ratioWithScrHeight(context, 0.075),
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(2)),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton(
+                                  isExpanded: true,
+                                  value: projectValue ?? 'Select Clients',
+                                  items: [
+                                    'Select Clients',
+                                    'Yahuza Abdul-Hakim',
+                                    'Vendetta Alkaline'
+                                  ]
+                                      .map(
+                                        (e) => DropdownMenuItem(
+                                          value: e,
+                                          child: Text(
+                                            e,
+                                            style: txtStyle(
+                                                color: e == projectValue
+                                                    ? Colors.red
+                                                    : Colors.black),
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      projectValue = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                            Spacing().verticalSpace(context, 0.03),
+                            Row(
+                              children: [
+                                Text(
+                                  'Start Date',
+                                  style: txtStyle(weight: FontWeight.w400),
+                                ),
+                                Text(
+                                  ' *',
+                                  style: txtStyle(color: Colors.red),
+                                )
+                              ],
+                            ),
+                            Spacing().verticalSpace(context, 0.02),
+                            GestureDetector(
+                              onTap: () async {
+                                DateTime? newDate = await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime.now(),
+                                    lastDate: DateTime(2024));
+                                if (newDate != null) {
+                                  setState(() {});
+                                }
+                              },
+                              child: const TextField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    suffixIcon: Icon(Icons.calendar_month)),
+                              ),
+                            ),
+                            Spacing().verticalSpace(context, 0.03),
+                            Row(
+                              children: [
+                                Text(
+                                  'End Date',
+                                  style: txtStyle(weight: FontWeight.w400),
+                                ),
+                                Text(
+                                  ' *',
+                                  style: txtStyle(color: Colors.red),
+                                )
+                              ],
+                            ),
+                            Spacing().verticalSpace(context, 0.02),
+                            GestureDetector(
+                              onTap: () async {
+                                DateTime? newDate = await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime.now(),
+                                    lastDate: DateTime(2024));
+                                if (newDate != null) {
+                                  setState(() {});
+                                }
+                              },
+                              child: const TextField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    suffixIcon: Icon(Icons.calendar_month)),
+                              ),
+                            ),
+                            Spacing().verticalSpace(context, 0.03),
+                            Row(
+                              children: [
+                                Text(
+                                  'Rate',
+                                  style: txtStyle(weight: FontWeight.w400),
                                 ),
                               ],
                             ),
+                            Spacing().verticalSpace(context, 0.02),
+                            TextField(
+                              enabled: false,
+                              controller: TextEditingController(text: '\$50'),
+                              decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  suffixIcon: Icon(Icons.calendar_month)),
+                            ),
+                            Spacing().verticalSpace(context, 0.03),
+                            Container(
+                              height:
+                                  Sizes().ratioWithScrHeight(context, 0.075),
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(2)),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton(
+                                  isExpanded: true,
+                                  value: hourlyValue ?? 'Hourly',
+                                  items: [
+                                    'Hourly',
+                                    'Fixed',
+                                  ]
+                                      .map(
+                                        (e) => DropdownMenuItem(
+                                          value: e,
+                                          child: Text(
+                                            e,
+                                            style: txtStyle(
+                                                color: e == projectValue
+                                                    ? Colors.red
+                                                    : Colors.black),
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      projectValue = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                            Spacing().verticalSpace(context, 0.03),
                             Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [Text('Create Project')]),
-                          ],
-                        ),
-                        content: Column(children: [
-                          Spacing().verticalSpace(context, 0.02),
-                          Row(children: const [
-                            Text('Project Name'),
-                          ]),
-                          Spacing().verticalSpace(context, 0.02),
-                          const TextField(
-                            decoration:
-                                InputDecoration(border: OutlineInputBorder()),
-                          ),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(children: const [Text('Client')]),
-                          Spacing().verticalSpace(context, 0.02),
-                          Container(
-                            height: Sizes().ratioWithScrHeight(context, 0.075),
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(2)),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton(
-                                isExpanded: true,
-                                value: projectValue ?? 'Select Clients',
-                                items: [
-                                  'Select Clients',
-                                  'Yahuza Abdul-Hakim',
-                                  'Vendetta Alkaline'
-                                ]
-                                    .map(
-                                      (e) => DropdownMenuItem(
-                                        value: e,
-                                        child: Text(
-                                          e,
-                                          style: txtStyle(
-                                              color: e == projectValue
-                                                  ? Colors.red
-                                                  : Colors.black),
+                              children: const [Text('Priority')],
+                            ),
+                            Spacing().verticalSpace(context, 0.02),
+                            Container(
+                              height:
+                                  Sizes().ratioWithScrHeight(context, 0.075),
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black),
+                                  borderRadius: BorderRadius.circular(2)),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton(
+                                  isExpanded: true,
+                                  value: priorityValue ?? 'High',
+                                  items: ['High', 'Medium', 'Low']
+                                      .map(
+                                        (e) => DropdownMenuItem(
+                                          value: e,
+                                          child: Text(
+                                            e,
+                                            style: txtStyle(
+                                                color: e == projectValue
+                                                    ? Colors.red
+                                                    : Colors.black),
+                                          ),
                                         ),
-                                      ),
-                                    )
-                                    .toList(),
-                                onChanged: (value) {
-                                  setState(() {
-                                    projectValue = value;
-                                  });
-                                },
+                                      )
+                                      .toList(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      projectValue = value;
+                                    });
+                                  },
+                                ),
                               ),
                             ),
-                          ),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(
-                            children: [
-                              Text(
-                                'Start Date',
-                                style: txtStyle(weight: FontWeight.w400),
-                              ),
-                              Text(
-                                ' *',
-                                style: txtStyle(color: Colors.red),
+                            Spacing().verticalSpace(context, 0.03),
+                            Row(children: const [
+                              Text('Add Project Leader'),
+                            ]),
+                            Spacing().verticalSpace(context, 0.02),
+                            const TextField(
+                              decoration:
+                                  InputDecoration(border: OutlineInputBorder()),
+                            ),
+                            Spacing().verticalSpace(context, 0.03),
+                            Row(children: const [
+                              Text('Team Leader'),
+                            ]),
+                            Spacing().verticalSpace(context, 0.02),
+                            Row(children: const [
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('$path/download.jpg'),
+                                radius: 18,
                               )
-                            ],
-                          ),
-                          Spacing().verticalSpace(context, 0.02),
-                          GestureDetector(
-                            onTap: () async {
-                              DateTime? newDate = await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime.now(),
-                                  lastDate: DateTime(2024));
-                              if (newDate != null) {
-                                setState(() {});
-                              }
-                            },
-                            child: const TextField(
-                              enabled: false,
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  suffixIcon: Icon(Icons.calendar_month)),
+                            ]),
+                            Spacing().verticalSpace(context, 0.03),
+                            Row(children: const [
+                              Text('Add Team'),
+                            ]),
+                            Spacing().verticalSpace(context, 0.02),
+                            const TextField(
+                              decoration:
+                                  InputDecoration(border: OutlineInputBorder()),
                             ),
-                          ),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(
-                            children: [
-                              Text(
-                                'End Date',
-                                style: txtStyle(weight: FontWeight.w400),
-                              ),
-                              Text(
-                                ' *',
-                                style: txtStyle(color: Colors.red),
-                              )
-                            ],
-                          ),
-                          Spacing().verticalSpace(context, 0.02),
-                          GestureDetector(
-                            onTap: () async {
-                              DateTime? newDate = await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime.now(),
-                                  lastDate: DateTime(2024));
-                              if (newDate != null) {
-                                setState(() {});
-                              }
-                            },
-                            child: const TextField(
-                              enabled: false,
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  suffixIcon: Icon(Icons.calendar_month)),
-                            ),
-                          ),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(
-                            children: [
-                              Text(
-                                'Rate',
-                                style: txtStyle(weight: FontWeight.w400),
-                              ),
-                            ],
-                          ),
-                          Spacing().verticalSpace(context, 0.02),
-                          TextField(
-                            enabled: false,
-                            controller: TextEditingController(text: '\$50'),
-                            decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                suffixIcon: Icon(Icons.calendar_month)),
-                          ),
-                          Spacing().verticalSpace(context, 0.03),
-                          Container(
-                            height: Sizes().ratioWithScrHeight(context, 0.075),
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(2)),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton(
-                                isExpanded: true,
-                                value: hourlyValue ?? 'Hourly',
-                                items: [
-                                  'Hourly',
-                                  'Fixed',
-                                ]
-                                    .map(
-                                      (e) => DropdownMenuItem(
-                                        value: e,
-                                        child: Text(
-                                          e,
-                                          style: txtStyle(
-                                              color: e == projectValue
-                                                  ? Colors.red
-                                                  : Colors.black),
-                                        ),
+                            Spacing().verticalSpace(context, 0.03),
+                            Row(children: const [
+                              Text('Team Members'),
+                            ]),
+                            Spacing().verticalSpace(context, 0.02),
+                            Row(children: [
+                              ...[
+                                '$path/download.jpg',
+                                '$path/downloadTwo.jpg',
+                                '$path/downloadThree.jpg',
+                                '$path/downloadFour.jpg'
+                              ]
+                                  .map(
+                                    (e) => Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: CircleAvatar(
+                                        backgroundImage: AssetImage(e),
+                                        radius: 18,
                                       ),
-                                    )
-                                    .toList(),
-                                onChanged: (value) {
-                                  setState(() {
-                                    projectValue = value;
-                                  });
-                                },
+                                    ),
+                                  )
+                                  .toList(),
+                              Spacing().horizontalSpace(context, 0.02),
+                              const Text('+2')
+                            ]),
+                            Spacing().verticalSpace(context, 0.03),
+                            Row(children: const [Text('Description')]),
+                            Spacing().verticalSpace(context, 0.02),
+                            Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color.fromARGB(
+                                          255, 219, 213, 213)),
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(6),
+                                      topRight: Radius.circular(6))),
+                              child: quill.QuillToolbar.basic(
+                                controller: controller,
+                                toolbarIconSize: 10,
                               ),
                             ),
-                          ),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(
-                            children: const [Text('Priority')],
-                          ),
-                          Spacing().verticalSpace(context, 0.02),
-                          Container(
-                            height: Sizes().ratioWithScrHeight(context, 0.075),
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.circular(2)),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton(
-                                isExpanded: true,
-                                value: priorityValue ?? 'High',
-                                items: ['High', 'Medium', 'Low']
-                                    .map(
-                                      (e) => DropdownMenuItem(
-                                        value: e,
-                                        child: Text(
-                                          e,
-                                          style: txtStyle(
-                                              color: e == projectValue
-                                                  ? Colors.red
-                                                  : Colors.black),
-                                        ),
-                                      ),
-                                    )
-                                    .toList(),
-                                onChanged: (value) {
-                                  setState(() {
-                                    projectValue = value;
-                                  });
-                                },
+                            Container(
+                              width: Sizes().scrWidth(context),
+                              height: Sizes().ratioWithScrHeight(context, 0.2),
+                              color: const Color.fromARGB(255, 228, 222, 222),
+                              child: quill.QuillEditor(
+                                controller: controller,
+                                readOnly: false,
+                                autoFocus: false,
+                                focusNode: FocusNode(),
+                                scrollable: true,
+                                scrollController: ScrollController(),
+                                padding: EdgeInsets.zero,
+                                expands: false,
                               ),
                             ),
-                          ),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(children: const [
-                            Text('Add Project Leader'),
-                          ]),
-                          Spacing().verticalSpace(context, 0.02),
-                          const TextField(
-                            decoration:
-                                InputDecoration(border: OutlineInputBorder()),
-                          ),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(children: const [
-                            Text('Team Leader'),
-                          ]),
-                          Spacing().verticalSpace(context, 0.02),
-                          Row(children: const [
-                            CircleAvatar(
-                              backgroundImage: AssetImage('$path/download.jpg'),
-                              radius: 18,
+                            Spacing().verticalSpace(context, 0.04),
+                            SizedBox(
+                              width: Sizes().ratioWithScrWidth(context, 0.3),
+                              height: Sizes().ratioWithScrHeight(context, 0.06),
+                              child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Colors.orange),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20)))),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+
+                                    setState(() {});
+                                  },
+                                  child: const Text('Submit')),
                             )
                           ]),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(children: const [
-                            Text('Add Team'),
-                          ]),
-                          Spacing().verticalSpace(context, 0.02),
-                          const TextField(
-                            decoration:
-                                InputDecoration(border: OutlineInputBorder()),
-                          ),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(children: const [
-                            Text('Team Members'),
-                          ]),
-                          Spacing().verticalSpace(context, 0.02),
-                          Row(children: [
-                            ...[
-                              '$path/download.jpg',
-                              '$path/downloadTwo.jpg',
-                              '$path/downloadThree.jpg',
-                              '$path/downloadFour.jpg'
-                            ]
-                                .map(
-                                  (e) => Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: CircleAvatar(
-                                      backgroundImage: AssetImage(e),
-                                      radius: 18,
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            Spacing().horizontalSpace(context, 0.02),
-                            const Text('+2')
-                          ]),
-                          Spacing().verticalSpace(context, 0.03),
-                          Row(children: const [Text('Description')]),
-                          Spacing().verticalSpace(context, 0.02),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: const Color.fromARGB(
-                                        255, 219, 213, 213)),
-                                borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(6),
-                                    topRight: Radius.circular(6))),
-                            child: quill.QuillToolbar.basic(
-                              controller: controller,
-                              toolbarIconSize: 10,
-                            ),
-                          ),
-                          Container(
-                            width: Sizes().scrWidth(context),
-                            height: Sizes().ratioWithScrHeight(context, 0.2),
-                            color: const Color.fromARGB(255, 228, 222, 222),
-                            child: quill.QuillEditor(
-                              controller: controller,
-                              readOnly: false,
-                              autoFocus: false,
-                              focusNode: FocusNode(),
-                              scrollable: true,
-                              scrollController: ScrollController(),
-                              padding: EdgeInsets.zero,
-                              expands: false,
-                            ),
-                          ),
-                          Spacing().verticalSpace(context, 0.04),
-                          SizedBox(
-                            width: Sizes().ratioWithScrWidth(context, 0.3),
-                            height: Sizes().ratioWithScrHeight(context, 0.06),
-                            child: ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.orange),
-                                    shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20)))),
-                                onPressed: () {
-                                  Navigator.pop(context);
-
-                                  setState(() {});
-                                },
-                                child: const Text('Submit')),
-                          )
-                        ]),
-                      ),
-                    );
+                        ),
+                      );
+                    });
                   },
                 ),
                 child: addButton(

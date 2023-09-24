@@ -110,320 +110,322 @@ class _EmployeesListState extends State<EmployeesList> {
                   onTap: () => showDialog(
                         context: context,
                         builder: (context) {
-                          return SingleChildScrollView(
-                            child: AlertDialog(
-                              title: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      SizedBox(
-                                        width: 20,
-                                        height: 30,
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: const Icon(Icons.cancel),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: const [
-                                        Text('Add Employee'),
-                                      ]),
-                                ],
-                              ),
-                              content: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                          return StatefulBuilder(builder: (context, setState) {
+                            return SingleChildScrollView(
+                              child: AlertDialog(
+                                title: Column(
                                   children: [
-                                    Spacing().verticalSpace(context, 0.015),
                                     Row(
-                                      children: [
-                                        Text(
-                                          'First Name',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    const TextField(
-                                      decoration: InputDecoration(
-                                          border: OutlineInputBorder()),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Last Name',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    const TextField(
-                                      decoration: InputDecoration(
-                                          border: OutlineInputBorder()),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Username',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    const TextField(
-                                      decoration: InputDecoration(
-                                          border: OutlineInputBorder()),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Email',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    const TextField(
-                                      decoration: InputDecoration(
-                                          border: OutlineInputBorder()),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Password',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    const TextField(
-                                      decoration: InputDecoration(
-                                          border: OutlineInputBorder()),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Confirm Password',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    const TextField(
-                                      decoration: InputDecoration(
-                                          border: OutlineInputBorder()),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Employee ID',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    TextField(
-                                      enabled: false,
-                                      controller: TextEditingController(
-                                          text: 'EMP-857906'),
-                                      decoration: const InputDecoration(
-                                          border: OutlineInputBorder()),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Phone',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    const TextField(
-                                      decoration: InputDecoration(
-                                          border: OutlineInputBorder()),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Department',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    Container(
-                                      height: Sizes()
-                                          .ratioWithScrHeight(context, 0.075),
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                          border:
-                                              Border.all(color: Colors.black),
-                                          borderRadius:
-                                              BorderRadius.circular(2)),
-                                      child: DropdownButtonHideUnderline(
-                                        child: DropdownButton(
-                                          isExpanded: true,
-                                          value: departmentValue ??
-                                              'Select Department',
-                                          items: [
-                                            'Select Department',
-                                            'Marketing',
-                                            'IT Department',
-                                            'Web Development'
-                                          ]
-                                              .map(
-                                                (e) => DropdownMenuItem(
-                                                  value: e,
-                                                  child: Text(
-                                                    e,
-                                                    style: txtStyle(
-                                                        color: Colors.black),
-                                                  ),
-                                                ),
-                                              )
-                                              .toList(),
-                                          onChanged: (value) {
-                                            setState(() {
-                                              departmentValue = value;
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.03),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Select Designation',
-                                          style:
-                                              txtStyle(weight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          ' *',
-                                          style: txtStyle(color: Colors.red),
-                                        )
-                                      ],
-                                    ),
-                                    Spacing().verticalSpace(context, 0.02),
-                                    Container(
-                                      height: Sizes()
-                                          .ratioWithScrHeight(context, 0.075),
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                          border:
-                                              Border.all(color: Colors.black),
-                                          borderRadius:
-                                              BorderRadius.circular(2)),
-                                      child: DropdownButtonHideUnderline(
-                                        child: DropdownButton(
-                                          isExpanded: true,
-                                          value: designationValue ??
-                                              'Select Designation',
-                                          items: [
-                                            'Select Designation',
-                                            'Web Designer',
-                                            'Web Developer',
-                                          ]
-                                              .map(
-                                                (e) => DropdownMenuItem(
-                                                  value: e,
-                                                  child: Text(
-                                                    e,
-                                                    style: txtStyle(
-                                                        color: Colors.black),
-                                                  ),
-                                                ),
-                                              )
-                                              .toList(),
-                                          onChanged: (value) {
-                                            setState(() {
-                                              designationValue = value;
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                    Spacing().verticalSpace(context, 0.04),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         SizedBox(
-                                          width: Sizes()
-                                              .ratioWithScrWidth(context, 0.3),
-                                          height: Sizes().ratioWithScrHeight(
-                                              context, 0.06),
-                                          child: ElevatedButton(
-                                              style: ButtonStyle(
-                                                  backgroundColor:
-                                                      MaterialStateProperty.all(
-                                                          Colors.orange),
-                                                  shape:
-                                                      MaterialStateProperty.all(
-                                                          RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          20)))),
-                                              onPressed: () {
-                                                Navigator.pop(context);
-
-                                                setState(() {});
-                                              },
-                                              child: const Text('Submit')),
+                                          width: 20,
+                                          height: 30,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Icon(Icons.cancel),
+                                          ),
                                         ),
                                       ],
-                                    )
-                                  ]),
-                            ),
-                          );
+                                    ),
+                                    Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const [
+                                          Text('Add Employee'),
+                                        ]),
+                                  ],
+                                ),
+                                content: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Spacing().verticalSpace(context, 0.015),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'First Name',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                          Text(
+                                            ' *',
+                                            style: txtStyle(color: Colors.red),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      const TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder()),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.03),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Last Name',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                          Text(
+                                            ' *',
+                                            style: txtStyle(color: Colors.red),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      const TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder()),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.03),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Username',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                          Text(
+                                            ' *',
+                                            style: txtStyle(color: Colors.red),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      const TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder()),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.03),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Email',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                          Text(
+                                            ' *',
+                                            style: txtStyle(color: Colors.red),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      const TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder()),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.03),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Password',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      const TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder()),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.03),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Confirm Password',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      const TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder()),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.03),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Employee ID',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                          Text(
+                                            ' *',
+                                            style: txtStyle(color: Colors.red),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      TextField(
+                                        enabled: false,
+                                        controller: TextEditingController(
+                                            text: 'EMP-857906'),
+                                        decoration: const InputDecoration(
+                                            border: OutlineInputBorder()),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.03),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Phone',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      const TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder()),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.03),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Department',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                          Text(
+                                            ' *',
+                                            style: txtStyle(color: Colors.red),
+                                          )
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Container(
+                                        height: Sizes()
+                                            .ratioWithScrHeight(context, 0.075),
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                            isExpanded: true,
+                                            value: departmentValue ??
+                                                'Select Department',
+                                            items: [
+                                              'Select Department',
+                                              'Marketing',
+                                              'IT Department',
+                                              'Web Development'
+                                            ]
+                                                .map(
+                                                  (e) => DropdownMenuItem(
+                                                    value: e,
+                                                    child: Text(
+                                                      e,
+                                                      style: txtStyle(
+                                                          color: Colors.black),
+                                                    ),
+                                                  ),
+                                                )
+                                                .toList(),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                departmentValue = value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.03),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Select Designation',
+                                            style: txtStyle(
+                                                weight: FontWeight.w400),
+                                          ),
+                                          Text(
+                                            ' *',
+                                            style: txtStyle(color: Colors.red),
+                                          )
+                                        ],
+                                      ),
+                                      Spacing().verticalSpace(context, 0.02),
+                                      Container(
+                                        height: Sizes()
+                                            .ratioWithScrHeight(context, 0.075),
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            borderRadius:
+                                                BorderRadius.circular(2)),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                            isExpanded: true,
+                                            value: designationValue ??
+                                                'Select Designation',
+                                            items: [
+                                              'Select Designation',
+                                              'Web Designer',
+                                              'Web Developer',
+                                            ]
+                                                .map(
+                                                  (e) => DropdownMenuItem(
+                                                    value: e,
+                                                    child: Text(
+                                                      e,
+                                                      style: txtStyle(
+                                                          color: Colors.black),
+                                                    ),
+                                                  ),
+                                                )
+                                                .toList(),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                designationValue = value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      Spacing().verticalSpace(context, 0.04),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: Sizes().ratioWithScrWidth(
+                                                context, 0.3),
+                                            height: Sizes().ratioWithScrHeight(
+                                                context, 0.06),
+                                            child: ElevatedButton(
+                                                style: ButtonStyle(
+                                                    backgroundColor:
+                                                        MaterialStateProperty
+                                                            .all(Colors.orange),
+                                                    shape: MaterialStateProperty
+                                                        .all(RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20)))),
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+
+                                                  setState(() {});
+                                                },
+                                                child: const Text('Submit')),
+                                          ),
+                                        ],
+                                      )
+                                    ]),
+                              ),
+                            );
+                          });
                         },
                       ),
                   child: addButton(
