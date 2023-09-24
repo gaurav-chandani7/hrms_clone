@@ -307,9 +307,8 @@ class _TrainingListState extends State<TrainingList> {
                                       Spacing().verticalSpace(context, 0.015),
                                       const TextField(
                                         decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            suffixIcon:
-                                                Icon(Icons.calendar_month)),
+                                          border: OutlineInputBorder(),
+                                        ),
                                       ),
                                       Spacing().verticalSpace(context, 0.02),
                                       Row(
